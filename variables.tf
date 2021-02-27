@@ -32,6 +32,13 @@ variable "is_hns_enabled" {
   description = "type of is hns"
 }
 
+variable "folder" {
+  description = "List of storage folders."
+  type        = list(string)
+  default     = []
+}
+
+
 ####
 
 #module "storage" {

@@ -18,7 +18,9 @@ resource "azurerm_storage_data_lake_gen2_filesystem" "dlakegen2" {
 }
 
 resource "azurerm_storage_data_lake_gen2_path" "example" {
-  path               = "example"
+  count                = length(var.folder)
+  path                 = var.folder[count.index]
+  #path               = "example"
   filesystem_name    = azurerm_storage_data_lake_gen2_filesystem.dlakegen2.name
   storage_account_id = azurerm_storage_account.account1.id
   resource           = "directory"
